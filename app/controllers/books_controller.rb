@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  befoer_action :find_book
-  before_action :set_user
+  befoer_action :find_book, only:[:show,:update,:edit,:destroy]
+  before_action :set_user 
 
 
   def index
+    @books =  Book.all
   end
 
   def show
