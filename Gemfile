@@ -11,6 +11,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+gem 'ratyrate'
 gem 'devise'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
