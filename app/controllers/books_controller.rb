@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  befoer_action :find_book, only:[:show,:update,:edit,:destroy]
+  before_action :find_book, only:[:show,:update,:edit,:destroy]
   before_action :set_user 
 
 
@@ -12,6 +12,7 @@ class BooksController < ApplicationController
   end
 
   def new
+    @book = Book.new
   end
 
   def edit
@@ -22,7 +23,7 @@ private
  	@book = Book.find(params[:id])	
  end
  def set_user
- 	@user = curent_user 
+ 	@user = current_user 
  end
 
 end

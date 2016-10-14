@@ -12,7 +12,13 @@ gem 'cloudinary'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'ratyrate'
-gem 'devise'
+gem 'acts_as_paranoid'
+gem 'acts-as-taggable-on'
+gem 'acts_as_votable'
+gem "devise", '~> 4.0.0.rc1'
+gem 'html2haml'
+gem 'haml-rails'
+gem 'bootstrap-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
