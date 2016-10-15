@@ -1,17 +1,27 @@
-.col-md-6.col-xs-12.col-offset-3
+.col-md-4.col-xs-12.col-md-offset-4
   .panel.panel-default
     .panel-heading
-      %h4 new book
+      %h2 Create New Book
     .panel-body
       = form_for @book ,url:books_new_path do |f|
         .form-group
           = f.label :name
-          = f.text_field :name
+          = f.text_field :name , class:"form-control"
         .form-group
           = f.label :author
-          = f.text_field :author
+          = f.text_field :author , class:"form-control"
         .form-group
           = f.label :published_at
-          = f.text_field :published_at 
-        .actions
-          = f.submit
+          .input-group.date{"data-provide" => "datepicker"}
+            = f.text_field :published_at , class:"form-control "
+            .input-group-addon
+              %span.glyphicon.glyphicon-th
+        .form-group
+          = f.label :price
+          = f.text_field :price , class:"form-control"
+        .form-group  
+          .actions
+            = f.submit
+
+
+          
