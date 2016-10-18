@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013074850) do
+ActiveRecord::Schema.define(version: 20161018022728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "addr_typ"
+    t.text     "addr"
+    t.string   "country"
+    t.string   "city"
+    t.integer  "pincode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -44,6 +54,14 @@ ActiveRecord::Schema.define(version: 20161013074850) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "state_id"
+    t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
   end
 
   create_table "images", force: :cascade do |t|
@@ -98,6 +116,12 @@ ActiveRecord::Schema.define(version: 20161013074850) do
     t.index ["book_reader_id"], name: "index_shared_items_on_book_reader_id", using: :btree
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -115,9 +139,16 @@ ActiveRecord::Schema.define(version: 20161013074850) do
     t.string   "f_name"
     t.string   "l_name"
     t.string   "mob"
+    t.integer  "state_id"
+    t.integer  "city_id"
+    t.index ["city_id"], name: "index_users_on_city_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["state_id"], name: "index_users_on_state_id", using: :btree
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "cities", "states"
+  add_foreign_key "users", "cities"
+  add_foreign_key "users", "states"
 end

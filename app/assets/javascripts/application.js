@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-datepicker
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker.min
 //= require_tree .
 $(document).ready(function(){
 		$('.datepicker').datepicker();
 	});
-    
+// jQery ->
+//    states = $()  

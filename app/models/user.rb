@@ -5,6 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :address
+  belongs_to :state
+  belongs_to :city 
+
 
 
 

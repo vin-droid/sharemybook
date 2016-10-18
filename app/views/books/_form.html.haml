@@ -2,8 +2,9 @@
   .panel.panel-default
     .panel-heading
       %h2 Create New Book
+      %input#searchTextField{:size => "50", :type => "text"}/
     .panel-body
-      = form_for @book ,url:books_new_path do |f|
+      = form_for @book do |f|
         .form-group
           = f.label :name
           = f.text_field :name , class:"form-control"
@@ -23,5 +24,3 @@
           .actions
             = f.submit
 
-
-          

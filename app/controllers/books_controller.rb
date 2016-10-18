@@ -15,6 +15,16 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+def create
+  @book = Book.new(set_params)
+
+  if @book.save
+    redirect_to '/'
+  else
+    render :new
+  end
+  
+end
   def edit
   end
 
@@ -24,6 +34,11 @@ private
  end
  def set_user
  	@user = current_user 
+ end
+ def set_params
+   params[:book][:user_id] = @user.id
+   params.require(:book).permit(:id, :price, :published_at, :author, :user_id, :name)
+   
  end
 
 end
