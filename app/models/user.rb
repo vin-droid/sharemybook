@@ -8,10 +8,6 @@ class User < ApplicationRecord
   has_many :address
   belongs_to :state
   belongs_to :city 
-
-
-
-
          def full_name
          	 self.f_name + " " + self.l_name
          end
