@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018022728) do
+ActiveRecord::Schema.define(version: 20161022143215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,14 @@ ActiveRecord::Schema.define(version: 20161018022728) do
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
-    t.string   "price"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "published_at"
     t.string   "author"
     t.integer  "user_id"
+    t.datetime "availability"
+    t.text     "description"
+    t.float    "price",        default: 0.0
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
@@ -145,6 +147,14 @@ ActiveRecord::Schema.define(version: 20161018022728) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["state_id"], name: "index_users_on_state_id", using: :btree
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "viewable_type"
+    t.integer  "viewable_id"
+    t.index ["viewable_type", "viewable_id"], name: "index_views_on_viewable_type_and_viewable_id", using: :btree
   end
 
   add_foreign_key "books", "users"

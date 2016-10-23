@@ -12,3 +12,17 @@ Thiruvananthapuram 2
 Kochi
 Kottayam
 Thrissur
+
+
+
+
+Book Type ->
+Educational And Professional Books
+Fiction & Non-Fiction Books
+Philosophy Books
+Indian Writing Books
+Religion & Spirituality Books
+Families and Relationships Books
+Reference Books
+Self-Help Books
+Hobbies & Interests Books

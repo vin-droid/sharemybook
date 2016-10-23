@@ -13,6 +13,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    cover = @book.build_cover
   end
 
 def create
@@ -21,9 +22,9 @@ def create
   if @book.save
     redirect_to '/'
   else
-    render :new
-  end
-  
+    cover = @book.build_cover
+    render new_book_path
+  end  
 end
   def edit
   end
@@ -37,7 +38,7 @@ private
  end
  def set_params
    params[:book][:user_id] = @user.id
-   params.require(:book).permit(:id, :price, :published_at, :author, :user_id, :name)
+   params.require(:book).permit(:id, :price, :published_at, :author, :user_id, :name,:cover_attributes=>[:image])
    
  end
 
