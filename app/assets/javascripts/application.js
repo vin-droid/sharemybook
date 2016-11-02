@@ -16,6 +16,8 @@
 //= require users
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker.min
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .
 $(document).ready(function(){
 		$('.datepicker').datepicker();

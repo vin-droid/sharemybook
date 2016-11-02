@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_book, only:[:show,:update,:edit,:destroy]
+  before_action :find_book, only:[:show,:update,:edit,:destroy, :downvote, :upvote]
   before_action :set_user 
+  after_action :update_points, only:[:upvote, :downvote]
 
 
   def index
@@ -28,6 +29,31 @@ def create
 end
   def edit
   end
+
+
+def upvote
+  @book.liked_by current_user
+  redirect_to @book
+end
+
+def downvote
+  @book.downvote_from current_user
+  redirect_to @book
+end
+
+def update_points
+  
+end
+
+
+def add_book_to_wishlist
+  
+end
+
+
+
+
+
 
 private
  def find_book

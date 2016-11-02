@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022143215) do
+ActiveRecord::Schema.define(version: 20161029041948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "trackable_type"
+    t.integer  "trackable_id"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.string   "key"
+    t.text     "parameters"
+    t.string   "recipient_type"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addr_typ"
@@ -36,14 +52,18 @@ ActiveRecord::Schema.define(version: 20161022143215) do
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "published_at"
     t.string   "author"
     t.integer  "user_id"
     t.datetime "availability"
     t.text     "description"
-    t.float    "price",        default: 0.0
+    t.float    "price",              default: 0.0
+    t.string   "type"
+    t.float    "lat"
+    t.float    "long"
+    t.string   "availablity_status"
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
@@ -64,6 +84,16 @@ ActiveRecord::Schema.define(version: 20161022143215) do
     t.datetime "updated_at", null: false
     t.integer  "state_id"
     t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
+  end
+
+  create_table "gain_points", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "activity"
+    t.integer  "related_id"
+    t.integer  "used_point"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "earned_points"
   end
 
   create_table "images", force: :cascade do |t|
@@ -106,6 +136,17 @@ ActiveRecord::Schema.define(version: 20161022143215) do
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "reviewable_type"
+    t.integer  "reviewable_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "reviewer"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable_type_and_reviewable_id", using: :btree
+  end
+
   create_table "shared_items", force: :cascade do |t|
     t.datetime "sharing_date"
     t.datetime "returning_date"
@@ -143,6 +184,8 @@ ActiveRecord::Schema.define(version: 20161022143215) do
     t.string   "mob"
     t.integer  "state_id"
     t.integer  "city_id"
+    t.integer  "lat"
+    t.integer  "long"
     t.index ["city_id"], name: "index_users_on_city_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -155,6 +198,20 @@ ActiveRecord::Schema.define(version: 20161022143215) do
     t.string   "viewable_type"
     t.integer  "viewable_id"
     t.index ["viewable_type", "viewable_id"], name: "index_views_on_viewable_type_and_viewable_id", using: :btree
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
   add_foreign_key "books", "users"

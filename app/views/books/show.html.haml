@@ -1,0 +1,23 @@
+.container-fluild
+  .row
+    .col-md-6.col-xs-12 
+      %div{class:"image_div"}
+        Rate this Book  : 
+        =rating_for @book, 'ratings',disable_after_rate: false, enable_half: true, half_show: true
+        =image_tag(@book.cover.image.url) 
+        %br
+        =@book.name
+        %br
+        =@book.author
+        %br
+        =@book.published_at
+        %br
+        =@book.price
+        %br
+        =@book.description
+        = @book.get_likes.size
+        = link_to like_book_path(@book), method: :put do 
+          %span{class:"glyphicon glyphicon-thumbs-up"}
+        = @book.get_dislikes.size
+        = link_to dislike_book_path(@book), method: :put do
+          %span{class:"glyphicon glyphicon-thumbs-down"} 
