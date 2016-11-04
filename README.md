@@ -61,6 +61,8 @@ Things you may want to cover:
 ------------->User can aprove for share book or reject that request(optional with note ).
 
 
+------------>If User Delete account --->soft delete
+------> User info will be shown to only User whose book he take on rent.
 
 
 ------------>By Default When User Create Acc +50 points added to users acc.

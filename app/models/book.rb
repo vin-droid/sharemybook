@@ -4,6 +4,7 @@ class Book < ApplicationRecord
 
 	ratyrate_rateable 'ratings'
 	acts_as_votable
+	acts_as_paranoid
 	enum type:[:requested, :uploaded]
 	enum availablity_status:[:on, :after]
 
