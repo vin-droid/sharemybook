@@ -4,9 +4,9 @@ class Book < ApplicationRecord
 
 	ratyrate_rateable 'ratings'
 	acts_as_votable
-	acts_as_paranoid
+	# acts_as_paranoid
 	enum type:[:requested, :uploaded]
-	enum availablity_status:[:on, :after]
+	enum availability_status:[:on, :after]
 
 
 	has_one :cover, :class_name=>'Image',  as: :imageable

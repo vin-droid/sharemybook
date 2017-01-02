@@ -22,6 +22,15 @@
           = f.label :author
           = f.text_field :author , class:"form-control", placeholder:"Book's Author Name"
         .form-group
+          = f.label :availability
+          .input-group.date{"data-provide" => "datepicker"}
+            = f.text_field :availability , class:"form-control ", placeholder:"Book will be availabale"
+            .input-group-addon
+              %span.glyphicon.glyphicon-th
+          .form-group
+            = f.label :availability_status
+            = f.select  :availability_status, Book.availability_statuses.keys
+        .form-group
           = f.label :published_at
           .input-group.date{"data-provide" => "datepicker"}
             = f.text_field :published_at , class:"form-control ", placeholder:"Book's Publishing Date"
