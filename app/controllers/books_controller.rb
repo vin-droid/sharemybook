@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :find_book, only:[:show,:update,:edit,:destroy, :downvote, :upvote]
   before_action :set_user 
   after_action :update_points, only:[:upvote, :downvote]

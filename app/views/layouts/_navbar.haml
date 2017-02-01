@@ -1,22 +1,42 @@
-%nav.navbar.navbar-inverse.navbar-static-top{style:"margin-bottom:0px;"}
+%nav.navbar.navbar-inverse.navbar-fixed-top{style:""}
   .container-fluid
     .navbar-header
       %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "#"} WebSiteName
+      %a.navbar-brand{:href => "#"} ShareMyBook
     #myNavbar.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li.active
-          %a{:href => "#"} Home
-        %li
-          %a{:href => "#"} Page 1
-        %li
-          %a{:href => "#"} Page 2
-        %li
-          %a{:href => "#"} Page 3
       %ul.nav.navbar-nav.navbar-right
+        %li.active
+          %a{:href => "#",class:"glyphicon glyphicon-home"} 
+        %li
+          %a{:href => "#section1"} Page 1
+        %li
+          %a{:href => "#section2"} Page 2
+        %li
+          %a{:href => "#section3"} Page 3
+        %li
+          %a{:href => "#section4",class:"glyphicon glyphicon-bell"} 
+        %li
+          %a{:href => "javascript:void(0)",class:"btn glyphicon glyphicon-option-vertical",style: "",id:'user-info'}
+          %ul{class:"hide"}
+            %li
+              %span Profile
+              %span{class:"glyphicon glyphicon-user pull-right",} 
+            %li
+              %span Wishlist
+              %span{class:"glyphicon glyphicon-book pull-right",}
+            %li
+              %span Shared book
+              %span{class:"glyphicon glyphicon-pushpin pull-right",}
+            %li
+              %span Booking Requests
+              %span{class:"glyphicon glyphicon-heart-empty pull-right",}
+            %li
+              %span Signout
+              %span{class:"glyphicon glyphicon-log-out pull-right",}
+      %ul.nav.navbar-nav.navbar-right.hide
         - if current_user
           %li 
             = link_to destroy_user_session_path, method: :delete do 
@@ -32,3 +52,66 @@
               %span.glyphicon.glyphicon-log-in
               Login
               
+
+:css
+  li{
+    display:block;
+  }
+  .show{
+    display:block;
+  }
+  #user-info{
+  margin: 5px 0px; padding:8px 4px 8px 4px;    border-radius: 50%;color: #fff;
+  }
+  #user-info + ul >li{
+  padding: 10px;position: relative;
+  white-space: nowrap;
+  display: flex;
+    justify-content: flex-end;
+  }
+  #user-info + ul >li >.d-line:after, #user-info + ul >li>.d-line:before{
+  content:' ';
+  width:10px;display:block;
+  height:10px;border: 2px solid;
+    border-radius: 50%;    position: absolute;
+
+    left: -5px;
+    
+  }
+  #user-info + ul >li >.d-line:after{
+    color:red;
+    bottom: -42%
+  }
+  #user-info + ul >li >.d-line:before{
+   color:black;     top: -50%;
+  }
+  #user-info + ul >li >.d-line{
+    position: absolute;
+    top: 60%;
+    height: 30px;
+    width: 0px;
+    border: 2px dotted;
+    right: 0;
+  }
+  #user-info + ul >li >.v-line{
+    height: 10px;
+    border: 2px solid;
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  #user-info + ul >li>span{
+
+  }
+  #user-info + ul{
+    background: darkseagreen;
+        width: 190px;
+        padding-left: 0px;left: -166px;margin: 20px auto;position: absolute;
+  }
+
+:javascript
+  $('#user-info').click(function(){
+    //debugger;
+    $('#user-info + ul').toggleClass('hide'); 
+  });
