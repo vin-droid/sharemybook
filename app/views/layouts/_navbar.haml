@@ -1,117 +1,176 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top{style:""}
+%nav.navbar.navbar-inverse.navbar-fixed-top
   .container-fluid
     .navbar-header
-      %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+      %ul#slide-out.side-nav
+        %li
+          .userView
+            .background
+              %img{:src => "assets/profile.jpg"}/
+            %a{:href => "#!user"}
+              %img.circle{:src => "assets/profile.jpg"}/
+            %a{:href => "#!name"}
+              %span.white-text.name John Doe
+            %a{:href => "#!email"}
+              %span.white-text.email jdandturk@gmail.com
+        %li
+          %a{:href => "#!"}
+            %i.material-icons> cloud
+            First Link With Icon
+        %li
+          %a{:href => "#!"} Second Link
+        %li
+          .divider
+        %li
+          %a.subheader Subheader
+        %li
+          %a.waves-effect{:href => "#!"} Third Link With Waves
+      %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
+        %i.material-icons menu
+      %ul{class:"sidebar-menu"}
+        %li.sidebar-menu-op
+          %span{class:"glyphicon glyphicon-user"} 
+          %span.menu-op-title Profile
+        %li.sidebar-menu-op
+          %span{class:"glyphicon glyphicon-book"}
+          %span.menu-op-title Wishlist
+        %li.sidebar-menu-op
+          %span{class:"glyphicon glyphicon-pushpin"}
+          %span.menu-op-title Shared book
+        %li.sidebar-menu-op
+          %span{class:"glyphicon glyphicon-heart-empty"}
+          %span.menu-op-title Booking Requests
+        %li.sidebar-menu-op
+          %span{class:'glyphicon glyphicon-cog'}
+          %span.menu-op-title Setting
+        %li.sidebar-menu-op
+          %span{class:"glyphicon glyphicon-log-out"}
+          %span.menu-op-title Signout
       %a.navbar-brand{:href => "#"} ShareMyBook
-    #myNavbar.collapse.navbar-collapse
+      .mobview-icon-container
+        %a{:href => "javascript:void(0)",class:"tab mobview-icon"}
+          %span{class:'tab-icon glyphicon glyphicon-tags'}
+        %a{:href => "javascript:void(0)",class:"tab mobview-icon"}
+          %span{class:'tab-icon glyphicon glyphicon-bell'}
+        %a#user-info-mob.tab.mobview-icon{:href => "javascript:void(0)"}
+          %span{class:'tab-icon glyphicon glyphicon-user'}
+        %ul{class:"profile-menu"}
+          %li.profile-info-box
+            .profile-img
+              %img{:src => "assets/profile.jpg", :alt => "",width:'60px',height:'60px',class:'profile-image'}/
+            .profile-name
+              %h5
+                Vineet Sahu
+            .profile-email
+              %span
+                vineetsahu3493@gmail.com
+          %li.profile-menu-op
+            %span{class:"glyphicon glyphicon-user"} 
+            %span.menu-op-title Profile
+          %li.profile-menu-op
+            %span{class:"glyphicon glyphicon-book"}
+            %span.menu-op-title Wishlist
+          %li.profile-menu-op
+            %span{class:"glyphicon glyphicon-pushpin"}
+            %span.menu-op-title Shared book
+          %li.profile-menu-op
+            %span{class:"glyphicon glyphicon-heart-empty"}
+            %span.menu-op-title Booking Requests
+          %li.profile-menu-op
+            %span{class:'glyphicon glyphicon-cog'}
+            %span.menu-op-title Setting
+          %li.profile-menu-op
+            %span{class:"glyphicon glyphicon-log-out"}
+            %span.menu-op-title Signout
+    %hr
       %ul.nav.navbar-nav.navbar-right
         %li.active
-          %a{:href => "#",class:"glyphicon glyphicon-home"} 
+          %a{:href => "javascript:void(0)",class:'tab'}
+            %span{class:'tab-icon glyphicon glyphicon-home'}
+            %span{class:'tab-title'} Home 
         %li
-          %a{:href => "#section1"} Page 1
+          %a{:href => "javascript:void(0)",class:'tab '}
+            %span{class:'tab-icon glyphicon glyphicon-book'}
+            %span{class:'tab-title'} About Us
         %li
-          %a{:href => "#section2"} Page 2
+          %a{:href => "javascript:void(0)",class:'tab'}
+            %span{class:'tab-icon glyphicon glyphicon-bookmark'}
+            %span{class:'tab-title'} Support
         %li
-          %a{:href => "#section3"} Page 3
-        %li
-          %a{:href => "#section4",class:"glyphicon glyphicon-bell"} 
-        %li
-          %a{:href => "javascript:void(0)",class:"btn glyphicon glyphicon-option-vertical",style: "",id:'user-info'}
-          %ul{class:"hide"}
-            %li
-              %span Profile
-              %span{class:"glyphicon glyphicon-user pull-right",} 
-            %li
-              %span Wishlist
-              %span{class:"glyphicon glyphicon-book pull-right",}
-            %li
-              %span Shared book
-              %span{class:"glyphicon glyphicon-pushpin pull-right",}
-            %li
-              %span Booking Requests
-              %span{class:"glyphicon glyphicon-heart-empty pull-right",}
-            %li
-              %span Signout
-              %span{class:"glyphicon glyphicon-log-out pull-right",}
-      %ul.nav.navbar-nav.navbar-right.hide
-        - if current_user
-          %li 
-            = link_to destroy_user_session_path, method: :delete do 
-              %span.glyphicon.glyphicon-log-out
-              Log Out
-        - else
-          %li
-            = link_to  new_user_registration_path  do 
-              %span.glyphicon.glyphicon-user
-              Sign Up
-          %li
-            = link_to  new_user_session_path  do
-              %span.glyphicon.glyphicon-log-in
-              Login
-              
+          %a{:href => "javascript:void(0)",class:"tab"}
+            %span{class:'tab-icon glyphicon glyphicon-home'}
+            %span{class:'tab-title'} Blog
+        %li{class:'notification-icon-li'}
+          %a{:href => "javascript:void(0)",class:"tab"}
+            %span{class:'tab-icon glyphicon glyphicon-bell'}
+            %span{class:'tab-title'} Notification
+        %li.notification-icon-li
+          %a{:href => "javascript:void(0)",id:'user-info',class:'tab'}
+            %span{class:'tab-icon glyphicon glyphicon-user'}
+            %span{class:'tab-title'} User
+          %ul{class:"profile-menu"}
+            %li.profile-info-box
+              .profile-img
+                %img{:src => "assets/profile.jpg", :alt => "",width:'60px',height:'60px',class:'profile-image'}/
+              .profile-name
+                %h5
+                  Vineet Sahu
+              .profile-email
+                %span
+                  vineetsahu3493@gmail.com
+            %li.profile-menu-op
+              %span{class:"glyphicon glyphicon-user"} 
+              %span.menu-op-title Profile
+            %li.profile-menu-op
+              %span{class:"glyphicon glyphicon-book"}
+              %span.menu-op-title Wishlist
+            %li.profile-menu-op
+              %span{class:"glyphicon glyphicon-pushpin"}
+              %span.menu-op-title Shared book
+            %li.profile-menu-op
+              %span{class:"glyphicon glyphicon-heart-empty"}
+              %span.menu-op-title Booking Requests
+            %li.profile-menu-op
+              %span{class:'glyphicon glyphicon-cog'}
+              %span.menu-op-title Setting
+            %li.profile-menu-op
+              %span{class:"glyphicon glyphicon-log-out"}
+              %span.menu-op-title Signout
+    %ol.carousel-indicators
+      %li.active
+        %a{:href => "#section1"}
+      %li
+        %a{:href => "#section2"}
+      %li
+        %a{:href => "#section3"}
+      %li
+        %a{:href => "#section4"}
+  
+:javascript           
+  $(function() {
+      // Code here
+      $('#user-info').click(function(event){
+       event.preventDefault();
+       console.log('user-info clicked');
+       $('.profile-menu').toggleClass('in',100);
+       document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; 
+      });
 
-:css
-  li{
-    display:block;
-  }
-  .show{
-    display:block;
-  }
-  #user-info{
-  margin: 5px 0px; padding:8px 4px 8px 4px;    border-radius: 50%;color: #fff;
-  }
-  #user-info + ul >li{
-  padding: 10px;position: relative;
-  white-space: nowrap;
-  display: flex;
-    justify-content: flex-end;
-  }
-  #user-info + ul >li >.d-line:after, #user-info + ul >li>.d-line:before{
-  content:' ';
-  width:10px;display:block;
-  height:10px;border: 2px solid;
-    border-radius: 50%;    position: absolute;
-
-    left: -5px;
-    
-  }
-  #user-info + ul >li >.d-line:after{
-    color:red;
-    bottom: -42%
-  }
-  #user-info + ul >li >.d-line:before{
-   color:black;     top: -50%;
-  }
-  #user-info + ul >li >.d-line{
-    position: absolute;
-    top: 60%;
-    height: 30px;
-    width: 0px;
-    border: 2px dotted;
-    right: 0;
-  }
-  #user-info + ul >li >.v-line{
-    height: 10px;
-    border: 2px solid;
-    color: #000;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
-  #user-info + ul >li>span{
-
-  }
-  #user-info + ul{
-    background: darkseagreen;
-        width: 190px;
-        padding-left: 0px;left: -166px;margin: 20px auto;position: absolute;
-  }
-
-:javascript
-  $('#user-info').click(function(){
-    //debugger;
-    $('#user-info + ul').toggleClass('hide'); 
+      $('#sidebar').click(function(event){
+        console.log('sidebar clicked');
+        event.preventDefault();
+        console.log($('.sidebar-menu').hasClass('s-in'));
+        $('.sidebar-menu').toggleClass('s-in',100);
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      });
+      $('#user-info-mob').click(function(){
+        console.log('user-info-mob clicked');
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        $('.profile-menu').toggleClass('in',100);
+      });
+  $(".button-collapse").sideNav();
   });
+
+:css 
+  nav a.button-collapse{
+   display:block;
+  }

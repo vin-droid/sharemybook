@@ -1,8 +1,10 @@
-.col-md-4.col-xs-12.col-md-offset-4
-  .panel.panel-default
-    %div{class:"panel-heading" , style:"color:#fff;  background-color:#87c540; box-shadow: 0px 10px 8px #888888;"}
-      %h2 Create New Book
-    %div{class:"panel panel-body"}
+.newBookPage
+  %div.newbooktitle
+    %h3 Create New Book
+
+.row
+  .col.m6.s12.stepOne
+    %div.panel.panel-body.step
       = form_for @book do |f|
         - if @book.errors.any?
           .alert.alert-danger.fade.in
@@ -50,4 +52,52 @@
         .form-group  
           .actions
             = f.submit "Create Book" ,class:"btn btn-default",style:"color:#fff ; background-color:#87c540 ;box-shadow: 3px 3px 8px #888888;"
-
+  .col.m6.s12.stepTwo
+    %div.panel.panel-body.step
+      = form_for @book do |f|
+        - if @book.errors.any?
+          .alert.alert-danger.fade.in
+            %a.close{"data-dismiss" => "alert", :href => "#"} ×
+            %strong Warning!
+            #error_explanation
+              %h2
+                = pluralize(@book.errors.count, "error")
+                prohibited this book from being saved:
+              %ul
+                - @book.errors.full_messages.each do |message|
+                  %li= message
+        .form-group
+          = f.label :name
+          = f.text_field :name , class:"form-control", placeholder:"Book Name"
+        .form-group
+          = f.label :author
+          = f.text_field :author , class:"form-control", placeholder:"Book's Author Name"
+        .form-group
+          = f.label :availability
+          .input-group.date{"data-provide" => "datepicker"}
+            = f.text_field :availability , class:"form-control ", placeholder:"Book will be availabale"
+            .input-group-addon
+              %span.glyphicon.glyphicon-th
+          .form-group
+            = f.label :availability_status
+            = f.select  :availability_status, Book.availability_statuses.keys
+        .form-group
+          = f.label :published_at
+          .input-group.date{"data-provide" => "datepicker"}
+            = f.text_field :published_at , class:"form-control ", placeholder:"Book's Publishing Date"
+            .input-group-addon
+              %span.glyphicon.glyphicon-th
+        .form-group
+          = f.label :price
+          %span{style: "float: right;"}
+            %span{style: "font-size:.8em; margin-left:40px"} 
+              Leave it if share for 
+            %span{style: "color: #fff; background-color: #87c540; padding:2px 2px; border-radius:2px;"}FREE
+          = f.text_field :price , class:"form-control", value: 0.0
+        .form-group
+          = f.fields_for :cover do |ff|
+            = ff.label :image, "Upload Book's Cover"
+            = ff.file_field :image 
+        .form-group  
+          .actions
+            = f.submit "Create Book" ,class:"btn btn-default",style:"color:#fff ; background-color:#87c540 ;box-shadow: 3px 3px 8px #888888;"

@@ -1,59 +1,52 @@
 
-
- <div class="form">
+<div class="login-page">
+ <div class="login-box">
+   <div class="row main">
+     <div class="col m6 s12">
+       
      <div class="row">
-       <div class="col-md-6 col-sm-12 col-xs-12" style="background: blue; height: 100%; ">
-          website login
-          <form>
-          Login Into Your Account
-            <div class="form-input">
-                        <input type="text" name="username">
-                        <input type="password" name="password">
-                        <button>Login</button>
-            </div>
-          </form>
-
-       </div>
-       <div class="col-md-6 col-sm-12 col-xs-12" style="height:100%; ">
-         social login
-         <div class="social-login-form">
-           <ul>
-             <li class="fb-btn login-btn" ><span> Sign In with Facebook</span> </li>
-             <li class="twitter-btn login-btn"><span> Sign In with Twitter</span>  </li>
-             <li class="gplus-btn login-btn"><span> Sign In with Goggle+</span> </li>
-           </ul>
-         </div>
-       </div>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="username" type="text" data-length="50">
+            <label for="username">User name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" data-length="16" class="validate">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+        </div>
+      </form>
+    </div>
      </div>
+    <div class="col m6 s12" style="height:100%; ">
+     social login
+     <div class="social-login-form">
+       <ul>
+         <li class="fb-btn login-btn" ><span> Sign In with Facebook</span> </li>
+         <li class="twitter-btn login-btn"><span> Sign In with Twitter</span>  </li>
+         <li class="gplus-btn login-btn"><span> Sign In with Goggle+</span> </li>
+       </ul>
+     </div>
+   </div>
  </div>
- <style type="text/css">
-   .row{
-    margin: 0px;
-    height:100%;
-  }
-  @media only screen and (max-width: 767px ){
-    .form{
-      width:95% !important; background: #000;
-    }
-  }
-  @media only screen and (min-width: 768px ){
-    .form{
-      margin-top: 150px !important;
-    }
-  }
-  ul{
-    padding: 0px;
-  }
-  .form{
-    width:600px ;  height:400px ; margin:0 auto; display: block;
-  }
-  input{
-    width:100%;margin-bottom: 10px;
-  }
-  li{
-    margin-bottom: 10px !important;
-    display: block;
-  }
+</div> 
+</div>
+
+
+<style type="text/css">
+
+
+/*  
+
   .btn{
     display: block !important;
   }
@@ -64,58 +57,13 @@
     position: absolute;
     left: 20px;
     top: 28px;
-  }
+  }*/
 
-  li.login-btn::before{
-    background-size: 36px 36px;
-    display: inline-block;
-    width: 36px; 
-    height: 36px;
-    content:"";
-    background-repeat: no-repeat;
-    float: left;
-  }
-  .login-btn{
-    padding: 0px;
-    background: #fff;
-    display: flex;
-    box-shadow: 0px 0px 2px #a7a6a6;
-    border: 1px solid #e5eaef;
-    border-radius: 2px;
-  }
-  li.fb-btn::before{
-    background-image: url('/assets/fb-icon.jpg');
-  }
-  li.twitter-btn::before{
-   background-image: url('/assets/twitter-icon.png');
-  }
-  li.gplus-btn::before{
-   background-image: url('/assets/google-plus-icon.png');
-  }
-  li.login-btn span{
-    padding: 4px 15px 4px 15px;
-  }
-  li.gplus-btn{
-    background: #b1050d;
-    color: #fff;
-  }
-  li.twitter-btn{
-    background: #31b6ef;
-    color: #fff;
-  }
-  li.fb-btn{
-    background: #4264af;
-    color: #fff;
-  }
-  .social-login-form{
-    
-    height: 100%;
-    font-family: serif;
-    font-size: large;
-    font-stretch: 43;
-    font-weight: bold;
-  }
- </style>
+
+</style>
+<script type="text/javascript">
+
+</script>
 
 
 

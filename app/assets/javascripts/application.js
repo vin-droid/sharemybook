@@ -14,10 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require users
+//= require main
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker.min
 //= require jquery.raty
 //= require ratyrate
+//= require materialize
+//= require materialize/extras/nouislider
+
 //= require_tree .
 $(document).ready(function(){
 		$('.datepicker').datepicker();
