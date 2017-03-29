@@ -3,7 +3,10 @@
 .pad-lr-50{
 	padding:0 50px;
 }
-
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
+	border-bottom: 1px solid #e0e0e0;
+}
+.no-pad{padding:0px !important;}
 
 
 /*New Book Page*/
@@ -390,13 +393,35 @@ nav.navbar > .container{
 
 
 /*Login Page*/
-
-.login-page .main{
-	background:url('login-bg');
-	background-size: cover;
-	background-repeat: no-repeat;
+.or-box{
+	display: inline-block;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
 }
-
+.or-tag{
+	text-align: center;
+    margin: 30px auto;
+} 
+.or-tag hr{
+    margin: 0px;
+    white-space: nowrap;
+    width: 25%;
+    border-top: 1px solid #e0e0e0;
+    display: inline-block;
+}
+.or-tag .or-text{
+	position: relative;
+	top:0px;
+	color: #e0e0e0;
+}
+.login-page .main{
+ background:#fff;
+ padding: 20px 0px 0px 0px;
+}
+.main .col.s12{padding: 0.75rem;}
 li.login-btn::before{
 	background-size: 36px 36px;
 	display: inline-block;
@@ -411,7 +436,6 @@ li.login-btn::before{
 	background: #fff;
 	display: flex;
 	box-shadow: 0px 0px 2px #a7a6a6;
-	border: 1px solid #e5eaef;
 	border-radius: 2px;
 	margin-bottom: 10px !important;
 	font-size: .9em;
@@ -425,8 +449,12 @@ li.twitter-btn::before{
 li.gplus-btn::before{
 	background-image: url('/assets/google-plus-icon.png');
 }
-li.login-btn span{
-	padding: 4px 0px 4px 15px;
+li.login-btn a{
+	color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 0px 15px;
 }
 li.gplus-btn{
 	background: #b1050d;
@@ -440,7 +468,7 @@ li.fb-btn{
 	background: #4264af;
 	color: #fff;
 }
-.social-login-form{height: 100%;font-family: serif;font-size: large;font-stretch: 43;font-weight: bold;}
+.social-login-form{height: 100%;font-family: serif;font-size: large;font-stretch: 43;font-weight: bold;flex-direction: column;align-self: center;}
 /*@media only screen and (max-width: 767px ){
 	.login-box{
 		width:95% !important; background: #000;
@@ -451,13 +479,10 @@ li.fb-btn{
 		width:auto !important; 
 	}
 }
-@media only screen and (max-width: 599px ){
-	.login-box .row.main div:nth-child(2) {
-		    position: relative;
-            top: 70px; 
-	}
+@media only screen and (min-width: 599px ){
+	.login-box .main{display: flex;}
 }
-.login-box{width:600px ; margin:80px auto 0px auto; display: block;}  
+.login-box{width:600px ; margin:90px auto 0px auto; display: block;}  
 .website-login-form > input{width:100%;margin-bottom: 10px;}
 .login-box .row{margin: 0px;height:100%;}
 .social-login-form ul{padding: 0px;}

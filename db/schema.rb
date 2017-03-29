@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106132337) do
+ActiveRecord::Schema.define(version: 20170327192450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,21 @@ ActiveRecord::Schema.define(version: 20161106132337) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "earned_points"
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "email"
+    t.string   "nickname"
+    t.string   "image"
+    t.string   "phone"
+    t.string   "urls"
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
 
   create_table "images", force: :cascade do |t|
@@ -189,7 +204,12 @@ ActiveRecord::Schema.define(version: 20161106132337) do
     t.integer  "long"
     t.string   "deleted_at"
     t.string   "time"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.index ["city_id"], name: "index_users_on_city_id", using: :btree
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["state_id"], name: "index_users_on_state_id", using: :btree
@@ -219,6 +239,7 @@ ActiveRecord::Schema.define(version: 20161106132337) do
 
   add_foreign_key "books", "users"
   add_foreign_key "cities", "states"
+  add_foreign_key "identities", "users"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "states"
 end

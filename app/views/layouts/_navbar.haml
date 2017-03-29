@@ -5,9 +5,9 @@
         %li
           .userView
             .background
-              %img{:src => "assets/profile.jpg"}/
+              = image_tag("profile.jpg",alt: "profile image")
             %a{:href => "#!user"}
-              %img.circle{:src => "assets/profile.jpg"}/
+              =image_tag("profile.jpg",alt: "profile image")
             %a{:href => "#!name"}
               %span.white-text.name John Doe
             %a{:href => "#!email"}
@@ -56,7 +56,7 @@
         %ul{class:"profile-menu"}
           %li.profile-info-box
             .profile-img
-              %img{:src => "assets/profile.jpg", :alt => "",width:'60px',height:'60px',class:'profile-image'}/
+              =image_tag("profile.jpg", :alt => "profile image",width:'60px',height:'60px',class:'profile-image')
             .profile-name
               %h5
                 Vineet Sahu
@@ -110,7 +110,7 @@
           %ul{class:"profile-menu"}
             %li.profile-info-box
               .profile-img
-                %img{:src => "assets/profile.jpg", :alt => "",width:'60px',height:'60px',class:'profile-image'}/
+                =image_tag("profile.jpg", :alt => "profile image",width:'60px',height:'60px',class:'profile-image')
               .profile-name
                 %h5
                   Vineet Sahu

@@ -8,6 +8,22 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '3724d1168b0761c1edeed395b58c85393c1a9c6680955368505b3a0f8121cd98837009465bde133face713a942c6ffb83c8775ce274119afefdba7ee2264f8aa'
 
+
+
+  # config.omniauth :facebook, "KEY", "SECRET"
+  config.omniauth :facebook, ENV["facebook_oauth_client_id"],ENV["facebook_oauth_secret"]
+  config.omniauth :linkedin, ENV["linked_in_oauth_client_id"],ENV["linked_in_oauth_secret"]
+  # config.omniauth :twitter, "KEY", "SECRET"
+  config.omniauth :twitter, "KEY", "SECRET"
+  # config.omniauth :linked_in, "KEY", "SECRET"
+  # config.omniauth :google_oauth2, ENV["GOOGLE_OAUTH_CLIENT_ID"], ENV["GOOGLE_OAUTH_SECRET"], {
+  #   scope: "email"
+  # }
+  config.omniauth :google_oauth2,ENV["google_oauth_client_id"],ENV["google_oauth_secret"],{
+    scope: "email"
+  }
+
+  
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
